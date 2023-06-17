@@ -3,14 +3,20 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Landing from "./components/Landing";
+import Cities from "./components/Cities";
 import LogIn from "./components/LogIn";
 import CreateAccount from "./components/CreateAccount";
 import reportWebVitals from "./reportWebVitals";
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Landing />,
+  },
+  {
+    path: "/cities",
+    element: <Cities />,
   },
   {
     path: "/login",

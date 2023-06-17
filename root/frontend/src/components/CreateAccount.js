@@ -1,21 +1,20 @@
 import React from "react";
-import "../containers/createaccount.css";
-import homeIcon from "../images/home_icon.png";
 import { Link } from "react-router-dom";
+import { Typography, Footer, IconButton } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import "../containers/createaccount.css";
 
 const CreateAccount = () => {
   return (
     <>
-      <p>Create Account</p>
-      <footer>
+      <Typography variant="h6">Create Account</Typography>
+      <Footer>
         <Link to="/">
-          <img
-            src={homeIcon}
-            alt={homeIcon}
-            style={{ width: "50px", height: "50px" }}
-          />
+          <IconButton>
+            <HomeIcon />
+          </IconButton>
         </Link>
-      </footer>
+      </Footer>
     </>
   );
 };

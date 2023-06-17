@@ -1,20 +1,19 @@
 import React from "react";
-import homeIcon from "../images/home_icon.png";
 import { Link } from "react-router-dom";
+import { Typography, Footer, IconButton } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
 
 const LogIn = () => {
   return (
     <>
-      <p>Log In</p>
-      <footer>
+      <Typography variant="h6">Log In</Typography>
+      <Footer>
         <Link to="/">
-          <img
-            src={homeIcon}
-            alt={homeIcon}
-            style={{ width: "50px", height: "50px" }}
-          />
+          <IconButton>
+            <HomeIcon />
+          </IconButton>
         </Link>
-      </footer>
+      </Footer>
     </>
   );
 };
