@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "../containers/cities.css";
 import { Typography, TextField, Button, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import HomeIcon from "../images/home_icon.png";
