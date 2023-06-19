@@ -2,18 +2,25 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../containers/cities.css";
+import { addCities } from "../store/actions/cityActions";
+import { useDispatch, useSelector } from "react-redux";
+//import cityStamp from "../images/city.jpg";
 import { Typography, TextField, Button, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import HomeIcon from "../images/home_icon.png";
 
+
+
+
+
 const Cities = () => {
   const [query, setQuery] = React.useState("");
-  const [cities, setCities] = React.useState([]);
+  const dispatch = useDispatch();
+  const cities = useSelector((state) => state.info.cities);
 
   const fetchData = async () => {
     const data = await axios.get(`http://localhost:5000/cities`);
-    console.log(data);
-    setCities(data.data);
+    dispatch(addCities(data.data));
   };
 
   useEffect(() => {
@@ -67,23 +74,32 @@ const Cities = () => {
         </ul>
       </div>
       <form>
-        <label>Name</label>
-        <TextField
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <br />
-        <label>Country</label>
-        <TextField
-          type="text"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-        />
-        <br />
-        <Button variant="contained" onClick={postData}>
-          POST
-        </Button>
+      <h3>Do you want to add your city?</h3>
+        <div className="addcity_container">
+          <div>
+            <label>City: </label>
+            <input
+              className="add_city"
+              type="text"
+              placeholder="ej: Barcelona"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div>
+            <label>Country: </label>
+            <input
+              className="add_country"
+              type="text"
+              placeholder="ej: Spain"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            />
+          </div>
+        </div>
+        <button className="post_city" onClick={postData}>
+          ADD CITY!
+        </button>
       </form>
       <footer>
         <Link to="/">
