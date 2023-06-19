@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Typography, Header, Body, Button, List, ListItem, IconButton } from "@mui/material";
+import { Typography, AppBar, Box, Button, List, ListItem, IconButton } from "@mui/material";
 import Logo from "../images/MYtineraryLogo.png";
 import SearchImage from "../images/search_image.png";
 import HomeIcon from "@mui/icons-material/Home";
@@ -26,10 +26,10 @@ const Landing = () => {
 
   return (
     <>
-      <Header>
+      <AppBar>
         <img className="logo" src={Logo} alt={Logo} style={{ height: "80px" }} />
-      </Header>
-      <Body>
+      </AppBar>
+      <Box>
         <Typography variant="h4" className="title">
           Find your perfect trip, designed by insiders who know and love their cities.
         </Typography>
@@ -56,7 +56,7 @@ const Landing = () => {
             ))}
           </List>
         </div>
-      </Body>
+      </Box>
       <footer>
         <Link to="/" className={`home__icon ${homeLink.isActive ? "active" : ""}`}>
           <IconButton>{homeLink.icon}</IconButton>

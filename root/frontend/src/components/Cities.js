@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
 import axios from "axios";
-import "../containers/cities.css";
+import "../containers/Cities.css";
 import { addCities } from "../store/actions/cityActions";
 import { useDispatch, useSelector } from "react-redux";
 //import cityStamp from "../images/city.jpg";
 import { Typography, TextField, Button, Grid } from "@mui/material";
 import { Box } from "@mui/system";
-import HomeIcon from "../images/home_icon.png";
+
 
 
 

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import infoReducer from "./info/infoReducer";
+import infoReducer from "./actions/cityReducer";
 
 export const store = configureStore({
   reducer: { info: infoReducer },

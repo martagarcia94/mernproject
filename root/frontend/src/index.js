@@ -4,14 +4,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Landing from "./components/Landing";
 import Cities from "./components/Cities";
-import LogIn from "./components/LogIn";
+import LogIn from "./components/Login";
 import CreateAccount from "./components/CreateAccount";
 import reportWebVitals from "./reportWebVitals";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { createStore, applyMiddleware } from "redux";
+//import { composeWithDevTools } from "redux-devtools-extension";
+//import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import rootReducer from "./store/reduces/rootReducer";
+//import thunk from "redux-thunk";
+//import rootReducer from "./store/reduces/rootReducer";
 import { store } from "./store/store";
 
 
@@ -36,21 +36,12 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-    <Provider store={store}>
-      <React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
       <RouterProvider router={router} />
     </React.StrictMode>
-  </Provider>
-);
-
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
   </Provider>,
   document.getElementById("root")
 );
