@@ -5,23 +5,26 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  margin: 0 auto;
+  display: block;
+  animation: App-logo-spin infinite 20s linear;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: reduce) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: none;
   }
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #3f51b5;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(12px + 2vmin);
+  color: #ffffff;
 }
 
 .App-link {

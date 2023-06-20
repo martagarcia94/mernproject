@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
 import axios from "axios";
-import "../containers/Cities.css";
+import "../global.css";
 import { addCities } from "../store/actions/cityActions";
 import { useDispatch, useSelector } from "react-redux";
 //import cityStamp from "../images/city.jpg";
-import { Typography, TextField, Button, Grid } from "@mui/material";
+import { Button, TextField, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 
 
@@ -43,8 +43,8 @@ const Cities = () => {
   };
 
   return (
-    <Box>
-      <Typography variant="h1">Cities</Typography>
+    <Box className="outer-box">
+      <h1><HomeIcon /> Cities</h1>
       <div>
         <TextField
           type="text"
@@ -75,7 +75,7 @@ const Cities = () => {
         </ul>
       </div>
       <form>
-      <h3>Do you want to add your city?</h3>
+        <h3>Do you want to add your city?</h3>
         <div className="addcity_container">
           <div>
             <label>City: </label>
@@ -98,18 +98,23 @@ const Cities = () => {
             />
           </div>
         </div>
-        <button className="post_city" onClick={postData}>
-          ADD CITY!
-        </button>
+        <Button className="post_city" variant="contained" color="primary" onClick={postData}>
+          Add City!
+        </Button>
       </form>
       <footer>
-        <Link to="/">
-          <img
-            src={HomeIcon}
-            alt="Home Icon"
-            style={{ width: "50px", height: "50px" }}
-          />
-        </Link>
+        <Grid container spacing={2}>
+          <Grid item>
+            <Button component={Link} to="/login" variant="outlined" color="primary">
+              Log in
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button component={Link} to="/create-account" variant="outlined" color="primary">
+              Create Account
+            </Button>
+          </Grid>
+        </Grid>
       </footer>
     </Box>
   );
