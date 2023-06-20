@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./global.css";
 import Landing from "./components/Landing";
 import Cities from "./components/Cities";
+import Itinerary from "./components/Itinerary";
 import LogIn from "./components/Login";
 import CreateAccount from "./components/CreateAccount";
 import reportWebVitals from "./reportWebVitals";
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/cities",
     element: <Cities />,
+  },
+  {
+    path: "/itinerary/:id",
+    element: <Itinerary />,
   },
   {
     path: "/login",

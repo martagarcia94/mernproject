@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
+import SearchIcon from '@mui/icons-material/Search';
+import cityStamp from "../images/search_image.png";
 import axios from "axios";
 import "../global.css";
 import { addCities } from "../store/actions/cityActions";
 import { useDispatch, useSelector } from "react-redux";
-//import cityStamp from "../images/city.jpg";
+
 import { Button, TextField, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 
@@ -44,8 +46,9 @@ const Cities = () => {
 
   return (
     <Box className="outer-box">
-      <h1><HomeIcon /> Cities</h1>
-      <div>
+      <h1><HomeIcon /> Our holiday destinations </h1>
+      <div className="search_container">
+        <SearchIcon className="search_icon" sx={{ fontSize: 20 }} />
         <TextField
           type="text"
           placeholder="Search..."
@@ -53,36 +56,52 @@ const Cities = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <ul>
-          {cities
-            .filter((city) => {
-              const queryLowerCase = query.toLowerCase();
-              const cityName = city.name.toLowerCase();
-              return cityName.startsWith(queryLowerCase);
-            })
-            .sort(function (a, b) {
-              if (a.name < b.name) {
-                return -1;
-              }
-              if (a.name > b.name) {
-                return 1;
-              }
-              return 0;
-            })
-            .map((city) => (
-              <li key={city._id}>{city.name}</li>
-            ))}
-        </ul>
       </div>
+      <ul>
+        {cities
+          .filter((city) => {
+            const queryLowerCase = query.toLowerCase();
+            const cityName = city.name.toLowerCase();
+            return cityName.startsWith(queryLowerCase);
+          })
+          .sort((cityA, cityB) => {
+            if (cityA.name < cityB.name) {
+              return -1;
+            }
+            if (cityA.name > cityB.name) {
+              return 1;
+            }
+            return 0;
+          })
+          .map((city) => (
+            <Link to={`/itinerary/${city.name}`}>
+            {" "}
+            <li className="city_file" key={city._id}>
+              {city.name}
+              {
+                <img
+                  src={city.imgUrl ? city.imgUrl : cityStamp}
+                  alt={
+                    city.imgUrl
+                      ? `Imagen de la ciudad de ${city.name}`
+                      : "Imagen por defecto"
+                  }
+                  style={{ width: "240px", height: "200px" }}
+                />
+              }
+            </li>
+          </Link>
+          ))}
+      </ul>
       <form>
-        <h3>Do you want to add your city?</h3>
+        <h3> Do you recommend your city? </h3>
         <div className="addcity_container">
           <div>
             <label>City: </label>
             <input
               className="add_city"
               type="text"
-              placeholder="ej: Barcelona"
+              placeholder="e.g. Barcelona"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -92,14 +111,19 @@ const Cities = () => {
             <input
               className="add_country"
               type="text"
-              placeholder="ej: Spain"
+              placeholder="e.g. Spain"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
             />
           </div>
         </div>
-        <Button className="post_city" variant="contained" color="primary" onClick={postData}>
-          Add City!
+        <Button
+          className="post_city"
+          variant="contained"
+          color="primary"
+          onClick={postData}
+        >
+          Add
         </Button>
       </form>
       <footer>
